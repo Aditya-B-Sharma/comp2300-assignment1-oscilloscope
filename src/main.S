@@ -8,27 +8,35 @@
 
 main:
   bl init
-  mov r10, 12
+  mov r10, 110
 
 loop:
+  mov r10, 110
+  mov r0, 0xaa10
+  mov r11, pc
+  b checkloop
+  b loop
 
-  dot1:
-    mov r0, 0xd8f0
-    mov r11, pc
-    b checkloop
-
+checkloop:
+  bl BSP_AUDIO_OUT_Play_Sample
+  add r0, r0, 400
+  subs r10, 1
+  cmp r10, 0
+  bne checkloop
+  mov pc, r11  
+/*
   dot2:
-    mov r0, 0xe2b4
+    mov r0, 0xbf8c
     mov r11, pc
     b checkloop
 
   dot3:
-    mov r0, 0xec78
+    mov r0, 0xd508
     mov r11, pc
     b checkloop    
 
   dot4:
-    mov r0, 0xf63c
+    mov r0, 0xea84
     mov r11, pc
     b checkloop
 
@@ -38,34 +46,27 @@ loop:
     b checkloop
 
   dot6:
-    mov r0, 0x9c4
+    mov r0, 0x157c
     mov r11, pc
     b checkloop
 
   dot7:
-    mov r0, 0x1388
+    mov r0, 0x2af8
     mov r11, pc
     b checkloop
 
   dot8:
-    mov r0, 0x1d4c
+    mov r0, 0x4074
     mov r11, pc
     b checkloop
 
   dot9:
-    mov r0, 0x2710
+    mov r0, 0x55f0
     mov r11, pc
     b checkloop     
-  
-  b loop
+  */
 
-  checkloop:
-    bl BSP_AUDIO_OUT_Play_Sample
-    subs r10, 1
-    cmp r10, 0
-    bne checkloop
-    mov r10, 12
-    mov pc, r11
+
 
   .size main, .-main
 
