@@ -9,15 +9,24 @@ main:
   bl init
 
 loop:
-  mov r10, 109
-  mov r0, 0xaad8
+  mov r10, 54
+  mov r1, 0xaad8  @@lower range of square wave
+  mov r2, 0x5528  @@upper range of square wave
 
-checkloop:
-  add r6, r0, 400
+lowloop:
+  mov r0, 0xaad8
   bl BSP_AUDIO_OUT_Play_Sample
-  mov r0, r6
   subs r10, 1
-  bne checkloop
-  beq loop
+  bne lowloop
+  mov r10, 54
+
+highloop:
+  mov r0, 0x5528
+  bl BSP_AUDIO_OUT_Play_Sample
+  subs r10, 1
+  bne highloop
+  mov r10, 54
+  b lowloop
+
 
 .size main, .-main  
