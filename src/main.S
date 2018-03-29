@@ -6,8 +6,18 @@
 @ https://cs.anu.edu.au/courses/comp2300/assignments/01-synth/#getting-started
 
 main:
-  @ replace this infinite loop with your Part 1 code
-  @ https://cs.anu.edu.au/courses/comp2300/assignments/01-synth/#part-1
-  nop
-  b main
-  .size main, .-main
+  bl init
+
+loop:
+  mov r10, 109
+  mov r0, 0xaad8
+
+checkloop:
+  add r6, r0, 400
+  bl BSP_AUDIO_OUT_Play_Sample
+  mov r0, r6
+  subs r10, 1
+  bne checkloop
+  beq loop
+
+.size main, .-main  
