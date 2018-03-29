@@ -26,6 +26,25 @@ highloop:
   subs r10, 1
   bne highloop
   mov r10, 54
+  mov r0, 0x5528
+
+
+trianglelowloop:
+  sub r6, r0, 957
+  bl BSP_AUDIO_OUT_Play_Sample
+  mov r0, r6
+  subs r10, 1
+  bne trianglelowloop
+  mov r10, 54
+  mov r0, 0xaad8
+
+trianglehighloop:
+  add r6, r0, 957
+  bl BSP_AUDIO_OUT_Play_Sample
+  mov r0, r6
+  subs r10, 1
+  bne trianglehighloop
+  mov r10, 54 
   b lowloop
 
 
