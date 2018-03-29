@@ -30,7 +30,7 @@ highloop:
 
 
 trianglelowloop:
-  sub r6, r0, 957
+  sub r6, r0, 807
   bl BSP_AUDIO_OUT_Play_Sample
   mov r0, r6
   subs r10, 1
@@ -39,7 +39,7 @@ trianglelowloop:
   mov r0, 0xaad8
 
 trianglehighloop:
-  add r6, r0, 957
+  add r6, r0, 807
   bl BSP_AUDIO_OUT_Play_Sample
   mov r0, r6
   subs r10, 1
@@ -49,3 +49,54 @@ trianglehighloop:
 
 
 .size main, .-main  
+
+
+
+
+main:
+  @@ initialise 
+
+start:
+  @@ initialise increment ceiling
+  @@ initialise upper amplitude ceiling
+  @@ initialise lower amplitude ceiling
+
+squarelow:
+  @@ put lower amplitude ceiling into r0
+  @@ play sample
+  @@ decrement tick
+  @@ check for tick == 0, if tick /= 0,
+  @@ branch to squarelow
+  @@ else, reset increment ceiling and go to squarehigh
+
+squarehigh:
+  @@ put higher amplitude ceiling into r0
+  @@ play sample
+  @@ decrement tick
+  @@ check for tick == 0, if tick /= 0,
+  @@ branch to squarehigh
+  @@ else, reset increment ceiling and,
+  @@ set r0 to higher amplitude ceiling and,
+  @@ continue to triangle low
+
+trianglelow:
+  @@ put higher amplitude ceiling into r0
+  @@ save higher amplitude ceiling minus decrement value 
+  @@ play sample
+  @@ decrement r0
+  @@ decrement tick
+  @@ check for tick == 0, if tick /= 0,
+  @@ branch to trianglelow
+  @@ else, reset increment/decrement ceiling and,
+  @@ set r0 to lower ceiling and go to squarehigh
+
+trianglehigh:
+  @@ put lower amplitude ceiling into r0
+  @@ save lower amplitude ceiling minus decrement value 
+  @@ play sample
+  @@ increment r0
+  @@ decrement tick
+  @@ check for tick == 0, if tick /= 0,
+  @@ branch to trianglehigh
+  @@ else, reset increment/decrement ceiling and,
+  @@ branch to squarelow 
