@@ -52,15 +52,13 @@ trianglehighloop:
 
 
 
-
+/*
 main:
   @@ initialise 
-
 start:
   @@ initialise increment ceiling
   @@ initialise upper amplitude ceiling
   @@ initialise lower amplitude ceiling
-
 squarelow:
   @@ put lower amplitude ceiling into r0
   @@ play sample
@@ -68,7 +66,6 @@ squarelow:
   @@ check for tick == 0, if tick /= 0,
   @@ branch to squarelow
   @@ else, reset increment ceiling and go to squarehigh
-
 squarehigh:
   @@ put higher amplitude ceiling into r0
   @@ play sample
@@ -78,7 +75,6 @@ squarehigh:
   @@ else, reset increment ceiling and,
   @@ set r0 to higher amplitude ceiling and,
   @@ continue to triangle low
-
 trianglelow:
   @@ put higher amplitude ceiling into r0
   @@ save higher amplitude ceiling minus decrement value 
@@ -89,7 +85,6 @@ trianglelow:
   @@ branch to trianglelow
   @@ else, reset increment/decrement ceiling and,
   @@ set r0 to lower ceiling and go to squarehigh
-
 trianglehigh:
   @@ put lower amplitude ceiling into r0
   @@ save lower amplitude ceiling minus decrement value 
@@ -99,4 +94,4 @@ trianglehigh:
   @@ check for tick == 0, if tick /= 0,
   @@ branch to trianglehigh
   @@ else, reset increment/decrement ceiling and,
-  @@ branch to squarelow 
+  @@ branch to squarelow */
