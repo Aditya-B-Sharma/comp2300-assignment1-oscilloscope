@@ -1,0 +1,16 @@
+mark: 30
+
+feedback:
+  well_done: >-
+    Well done on listing out the bugs you faced and including relevant diagrams.
+
+  suggestions: >-
+    Add comments to code.
+    Fix incorrect spelling and grammar.
+    There is a 2 page limit and you have gone up to 7.
+    No need to mention specific registers, rather you should say what the value in the register represents.
+    The picture on page 6 is completely unnecessary and shouldn't be included as it is basically a line by line explanation 
+    of your whole code, to that point I have your 'actual' code to do this for me.
+    You say additive synthesis would have been difficult but give no explanation for why this is.
+    Your design document in parts tends to be quite airy, shorter more succinct explanations would help a lot.
+    
