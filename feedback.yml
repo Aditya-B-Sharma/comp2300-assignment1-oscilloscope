@@ -1,0 +1,9 @@
+mark: 38
+
+feedback:
+  well_done: >-
+    Well done on generating the correct waveform
+
+  suggestions: >-
+    You need to comment your code.
+    You can use averaged wavelengths to get closer to 440hz.
